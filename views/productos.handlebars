@@ -1,0 +1,62 @@
+{{> navbar}}
+{{> marquee}}
+{{> head}}
+
+<section class="main-content container mt-5">
+  <h1 class="text-center mb-5">{{title}}</h1>
+
+  <div class="mb-3 text-end">
+    <a href="/auth/crear_producto" class="btn btn-primary">Crear Nuevo Producto</a>
+  </div>
+
+  {{#if products.length}}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Nombre</th>
+          <th>Material</th>
+          <th>Tipo</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each products}}
+          <tr>
+            <td>
+              {{#if this.imagen}}
+                <img src="/images/{{this.imagen}}" alt="{{this.nombre}}" width="50">
+              {{else}}
+                Sin Imagen
+              {{/if}}
+            </td>
+            <td>{{this.nombre}}</td>
+            <td>{{this.material}}</td>
+            <td>{{this.tipo}}</td>
+            <td>${{this.precio}}</td>
+            <td>{{this.cantidad}}</td>
+            <td>
+              <a href="/auth/editar_producto/{{this.id_producto}}" class="btn btn-warning btn-sm">Editar</a>
+              <form action="/auth/eliminar_producto/{{this.id_producto}}" method="POST" style="display:inline-block;">
+                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+              </form>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <p>No hay productos registrados.</p>
+  {{/if}}
+
+  <!-- Botón para volver al Panel de Administración -->
+  <div class="text-center mt-5">
+    <a href="/auth/administracion" class="btn btn-dark btn-sm mb-5" style="padding: 5px 15px; display: inline-block;">Volver al Panel de Administración</a>
+  </div>
+</section>
+
+{{> offcanvasCart}}
+{{> offcanvasProfile}}
+{{> footer}}

@@ -1,0 +1,44 @@
+{{> navbar}} 
+{{> marquee}}
+{{> head}}
+
+<section class="main-content container mt-5">
+  <h1 class="text-center mb-5">{{title}}</h1>
+
+  <!-- Información del usuario -->
+  <div class="profile-info-box mb-5 p-4" style="background-color: rgba(248, 249, 250, 1); border-radius: 15px; border: 1px solid rgba(0, 0, 0, .05);">
+    <h3 class="mb-4">Información Personal</h3>
+    <p style="font-size: 1.5rem;"><strong>Nombre:</strong> {{usuario.nombre}} {{usuario.apellido}}</p>
+    <p style="font-size: 1.5rem;"><strong>Correo:</strong> {{userProfile.email}}</p>
+    <p style="font-size: 1.5rem;"><strong>Saldo:</strong> ${{usuario.dinero}}</p>
+  </div>
+
+  <!-- Formulario para agregar dinero -->
+  <h3 class="mt-4">Agregar Dinero</h3>
+  {{#if error}}
+    <div class="alert alert-danger">Monto inválido. Por favor, ingrese un monto válido.</div>
+  {{/if}}
+
+  <form action="/agregar_dinero" method="POST" class="mb-4">
+    <div class="form-group">
+      <label for="monto">Monto a agregar:</label>
+      <input type="number" name="monto" id="monto" class="form-control" step="0.01" min="0.01" required>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Agregar</button>
+  </form>
+
+  <!-- Botón para cerrar sesión -->
+  <div class="mt-4">
+    <a href="/auth/logout" class="btn btn-danger">Cerrar Sesión</a>
+  </div>
+
+  <!-- Opciones de navegación al final -->
+  <div class="options-box mt-5 d-flex justify-content-center">
+    <a href="/perfil" class="btn-gold-selected btn-dark-outline me-2 mb-3">Perfil</a>
+    <a href="/historial" class="btn-gold-selected btn-dark-outline me-2 mb-3">Historial de Compras</a>
+  </div>
+</section>
+
+{{> offcanvasCart}}
+{{> offcanvasProfile}}
+{{> footer}}

@@ -1,0 +1,55 @@
+{{> navbar}}
+{{> marquee}}
+{{> head}}
+<section class="main-content container mt-5">
+  <h1 class="text-center mb-5">{{title}}</h1>
+
+  {{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+  {{/if}}
+
+  {{#if products.[0]}}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio Unitario</th>
+          <th>Cantidad</th>
+          <th>Precio Total</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each products}}
+          <tr>
+            <td>{{this.nombre}}</td>
+            <td>${{this.precio}}</td>
+            <td>{{this.cantidad_producto}}</td>
+            <td>${{this.precio_total}}</td>
+            <td>
+              <form action="/cart/remove/{{this.id_producto}}" method="POST">
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+              </form>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <div class="text-end">
+      <form action="/cart/checkout" method="POST">
+        <button type="submit" class="btn btn-success">Pagar</button>
+      </form>
+    </div>
+  {{else}}
+    <p>No hay productos en el carrito.</p>
+  {{/if}}
+   <div class="text-center mt-5">
+    <a href="/auth/login" class="btn btn-dark btn-sm mb-5" style="padding: 5px 15px; display: inline-block;">Volver al menu</a>
+  </div>
+
+</section>
+
+{{> offcanvasCart}}
+{{> offcanvasProfile}}
+{{> footer}}

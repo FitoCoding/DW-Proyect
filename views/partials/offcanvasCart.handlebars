@@ -1,0 +1,31 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart">
+  <div class="offcanvas-header">
+    <h5>Carrito de Compras</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    {{#if cartItems.length}}
+      <div class="cart-preview">
+        {{#each cartItems}}
+          <div class="d-flex align-items-center mb-3">
+            <div class="col-3">
+              <img src="/images/{{this.imagen}}" class="img-fluid rounded" alt="{{this.nombre}}" style="max-width: 60px;">
+            </div>
+            <div class="col-9">
+              <h6 class="mb-1">{{this.nombre}}</h6>
+              <p class="text-muted mb-0">${{this.precio}} - Cantidad: {{this.cantidad_producto}}</p>
+            </div>
+          </div>
+        {{/each}}
+        <div class="d-flex justify-content-between mt-3">
+          <span>Total:</span>
+          <strong>${{cartTotal}}</strong>
+        </div>
+        <a href="/cart" class="btn btn-dark w-100 mt-3">Ver Carrito Completo</a>
+      </div>
+    {{else}}
+      <p class="text-center">Tu carrito está vacío</p>
+    {{/if}}
+  </div>
+</div>
+

@@ -1,0 +1,55 @@
+{{> navbar}}
+{{> marquee}}
+{{> head}}
+<section class="main-content container mt-5">
+  <h1 class="text-center mb-5">Crear Producto</h1>
+
+  <form action="/auth/crear_producto" method="POST" enctype="multipart/form-data">
+    <div class="form-group mb-4">
+      <label for="nombre">Nombre del Producto:</label>
+      <input type="text" name="nombre" id="nombre" class="form-control" required>
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="precio">Precio del Producto:</label>
+      <input type="number" name="precio" id="precio" class="form-control" step="0.01" min="0" required>
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="material">Material:</label>
+      <input type="text" name="material" id="material" class="form-control" required>
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="tipo">Tipo:</label>
+      <input type="text" name="tipo" id="tipo" class="form-control" required>
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="cantidad">Cantidad Disponible:</label>
+      <input type="number" name="cantidad" id="cantidad" class="form-control" min="0" required>
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="descripcion">Descripción:</label>
+      <textarea name="descripcion" id="descripcion" class="form-control" rows="5" required></textarea>
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="imagen">Imagen del Producto:</label>
+      <input type="file" name="imagen" id="imagen" class="form-control-file" accept="image/*" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Crear Producto</button>
+  </form>
+
+  <!-- Botón para volver al Panel de Administración -->
+  <div class="text-center mt-5">
+    <a href="/auth/productos" class="btn btn-dark btn-sm mb-5" style="padding: 5px 15px; display: inline-block;">Volver a Productos </a>
+  </div>
+
+</section>
+
+{{> offcanvasCart}}
+{{> offcanvasProfile}}
+{{> footer}}

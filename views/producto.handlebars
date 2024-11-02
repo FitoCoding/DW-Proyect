@@ -1,0 +1,43 @@
+{{> navbar}}
+{{> marquee}}
+{{> head}}
+
+<section class="main-content container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <!-- Mostrar la imagen del producto -->
+      <img src="/images/{{product.imagen}}" class="img-fluid mb-4" alt="{{product.nombre}}">
+      
+      <!-- Botón para volver al menú -->
+      
+    </div>
+    <div class="col-md-6">
+      <h2>{{product.nombre}}</h2>
+      <p>
+        <strong>Material:</strong> {{product.material}}<br>
+        <strong>Tipo:</strong> {{product.tipo}}<br>
+        <strong>Precio:</strong> ${{product.precio}}<br>
+        <strong>Cantidad Disponible:</strong> {{product.cantidad}}
+      </p>
+      <p>{{product.descripcion}}</p>
+      <!-- Botón para agregar al carrito -->
+      {{#if login}}
+        <form action="/cart/add/{{product.id_producto}}" method="POST">
+          <div class="form-group">
+            <label for="quantity">Cantidad:</label>
+            <input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1" max="{{product.cantidad}}">
+          </div>
+          <button type="submit" class="btn btn-success mt-3">Agregar al Carrito</button>
+        </form>
+      {{else}}
+        <p>Debes <a href="/auth/login">iniciar sesión</a> para comprar este producto.</p>
+      {{/if}}
+    </div>
+  </div>
+</section>
+ <div class="text-center mt-5">
+    <a href="/auth/login" class="btn btn-dark btn-sm mb-5" style="padding: 5px 15px; display: inline-block;">Volver al menu</a>
+  </div>
+{{> offcanvasCart}}
+{{> offcanvasProfile}}
+{{> footer}}

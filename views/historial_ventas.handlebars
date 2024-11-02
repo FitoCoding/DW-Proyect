@@ -1,0 +1,35 @@
+{{> navbar}}
+{{> marquee}}
+{{> head}}
+
+<section class="main-content container mt-5">
+  <h1 class="text-center mb-5">{{title}}</h1>
+
+  {{#if ventas.length}}
+    {{#each ventas}}
+      <div class="card mb-4">
+        <div class="card-header">
+          <strong>Fecha:</strong> {{this.fecha}} | <strong>Monto Total:</strong> ${{this.monto_total}} | <strong>Usuario:</strong> {{this.usuario.nombre}} {{this.usuario.apellido}}
+        </div>
+        <div class="card-body">
+          <ul>
+            {{#each this.productos}}
+              <li>{{this.cantidad}} x {{this.nombre}} - ${{this.precio}}</li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    <p>No hay ventas registradas.</p>
+  {{/if}}
+
+  <!-- Botón para volver al panel de administración -->
+<div class="text-center mt-5">
+    <a href="/auth/administracion" class="btn btn-dark btn-sm mb-5" style="padding: 5px 15px; display: inline-block;">Volver al Panel de Administración</a>
+  </div>
+</section>
+
+{{> offcanvasCart}}
+{{> offcanvasProfile}}
+{{> footer}}

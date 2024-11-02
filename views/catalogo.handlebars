@@ -1,0 +1,37 @@
+{{> navbar}}
+{{> marquee}}
+{{> head}}
+<section class="main-content container mt-5">
+  <h1 class="text-center mb-5">{{title}}</h1>
+
+  <!-- Mostrar mensaje si no hay productos -->
+  {{#if products.length}}
+    <div class="row">
+      {{#each products}}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <!-- Mostrar la imagen del producto -->
+            <img src="/images/{{this.imagen}}" class="card-img-top" alt="{{this.nombre}}">
+            <div class="card-body">
+              <h5 class="card-title">{{this.nombre}}</h5>
+              <p class="card-text">
+                <strong>Material:</strong> {{this.material}}<br>
+                <strong>Tipo:</strong> {{this.tipo}}<br>
+                <strong>Precio:</strong> ${{this.precio}}<br>
+                <strong>Cantidad Disponible:</strong> {{this.cantidad}}
+              </p>
+              <a href="/producto/{{this.id_producto}}" class="btn btn-primary">Ver Detalles</a>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <p class="text-center">No se encontraron productos que coincidan con tu búsqueda o no hay productos disponibles en este momento.</p>
+  {{/if}}
+</section>
+
+{{> offcanvasCart}}
+{{> offcanvasProfile}}
+{{> footer}}
+

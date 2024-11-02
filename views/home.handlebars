@@ -1,0 +1,138 @@
+{{>marquee}}
+
+<!-- Navbar inclusion -->
+{{>navbar}}
+
+<!-- Billboard Section -->
+<section id="billboard" class="carousel slide" data-bs-ride="carousel" style="margin-top: 0;">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="images/joyas2.webp" class="d-block w-100 img-fluid" alt="Banner de productos de joyas">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Descubre Nuestros Productos</h5>
+        <a href="/catalogo" class="btn btn-dark">Comprar Ahora</a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="images/joyas1.webp" class="d-block w-100 img-fluid" alt="Banner de joyas personalizadas">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Elegancia y Estilo</h5>
+        <a href="/catalogo" class="btn btn-dark">Explorar</a>
+      </div>
+    </div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#billboard" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#billboard" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Siguiente</span>
+  </button>
+</section>
+
+<section id="servicios" class="py-5 text-center bg-dark text-white">
+  <div class="container">
+    <div class="row">
+      <!-- Servicios destacados -->
+      <div class="col-lg-3 col-md-6">
+        <div class="icon-box">
+          <img src="images/free-delivery.png" class="logo-size img-fluid" alt="Icono de entrega gratuita">
+          <h4>Entrega Gratuita</h4>
+          <p>Disfruta de nuestros envíos gratis a todo el país.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="icon-box">
+          <img src="images/best-quality.png" class="logo-size img-fluid" alt="Icono de garantía de calidad">
+          <h4>Garantía de Calidad</h4>
+          <p>Nos comprometemos a ofrecer productos de la mejor calidad.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="icon-box">
+          <img src="images/deal-days.png" class="logo-size img-fluid" alt="Icono de ofertas diarias">
+          <h4>Ofertas Diarias</h4>
+          <p>Aprovecha nuestras ofertas disponibles cada día.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="icon-box">
+          <img src="images/securepayment.png" class="logo-size img-fluid" alt="Icono de pago seguro">
+          <h4>Pago 100% Seguro</h4>
+          <p>Procesamos tus pagos de manera completamente segura.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="productos" class="py-5">
+  <div class="container">
+    <h2 class="text-center">Artículos Destacados</h2>
+    {{#if productosDestacados}}
+      <div class="row">
+        {{#each productosDestacados}}
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <img src="/images/{{this.imagen}}" class="card-img-top img-fluid" alt="{{this.nombre}}">
+              <div class="card-body">
+                <h5 class="card-title">{{this.nombre}}</h5>
+                <p class="card-text text-primary">${{this.precio}}</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Material: {{this.material}}</li>
+                <li class="list-group-item">Disponibilidad: {{#if this.cantidad}}En Stock{{else}}Sin Stock{{/if}}</li>
+              </ul>
+              <div class="card-body">
+                <a href="/producto/{{this.id_producto}}" class="btn btn-dark">Ver Detalles</a>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    {{else}}
+      <p class="text-center">No hay productos destacados en este momento.</p>
+    {{/if}}
+  </div>
+</section>
+
+<!-- Offcanvas de Wallet -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasWallet">
+  <div class="offcanvas-header">
+    <h5>Mi Wallet</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="wallet-balance mb-4">
+      <h6>Saldo Actual:</h6>
+      <p class="fs-4 wallet-balance-custom"><strong>$3500</strong></p>
+    </div>
+    <div class="wallet-history">
+      <h6>Historial de Compras</h6>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Joya 1 <span class="badge bg-primary rounded-pill">$980</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Joya 3 <span class="badge bg-primary rounded-pill">$1300</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Joya 4 <span class="badge bg-primary rounded-pill">$1100</span>
+        </li>
+      </ul>
+    </div>
+    <div class="mt-4">
+      <button class="btn btn-dark w-100">Añadir Saldo</button>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Footer inclusion -->
+{{> offcanvasCart}}
+{{> offcanvasProfile}}
+{{> footer}}

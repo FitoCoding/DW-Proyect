@@ -1,0 +1,36 @@
+{{> navbar}}
+{{> marquee}}
+{{> head}}
+<section class="main-content container mt-5">
+  <h1 class="text-center mb-5">{{title}}</h1>
+
+  <!-- Historial de compras -->
+  {{#if compras.length}}
+    {{#each compras}}
+      <div class="card mb-4">
+        <div class="card-header">
+          <strong>Fecha:</strong> {{this.fecha}} | <strong>Monto Total:</strong> ${{this.monto_total}}
+        </div>
+        <div class="card-body">
+          <ul>
+            {{#each this.productos}}
+              <li>{{this.cantidad}} x {{this.nombre}} - ${{this.precio}}</li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    <p>No tienes compras realizadas.</p>
+  {{/if}}
+</section>
+
+<!-- Opciones de navegación al final -->
+<div class="options-box mt-5 d-flex justify-content-center">
+  <a href="/perfil" class="btn-gold-selected btn-dark-outline me-2 mb-3">Perfil</a>
+  <a href="/historial" class="btn-gold-selected btn-dark-outline me-2 mb-3">Historial de Compras</a>
+</div>
+
+{{> offcanvasCart}}
+{{> offcanvasProfile}}
+{{> footer}}

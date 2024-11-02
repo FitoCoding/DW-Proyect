@@ -1,0 +1,117 @@
+<header id="header" class="site-header position-fixed w-100 bg-dark text-white">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <div class="row align-items-center w-100">
+        <div class="col-6 col-md-2 d-flex justify-content-start align-items-center">
+          <a href="/">
+            <img src="/images/Niluan-logo2.png" class="niluan-size" alt="Logo Niluan">
+          </a>
+        </div>
+
+        <!-- Búsqueda: Oculta en pantallas móviles -->
+        <div class="col-md-6 d-none d-md-block">
+          <form class="d-flex justify-content-end" action="/buscar" method="GET" style="max-width: 600px; transform: translateX(75px);" role="search">
+  <input class="form-control me-2" type="search" name="query" placeholder="¿Qué estás buscando?" aria-label="Buscar" style="flex-grow: 1;">
+  <button class="btn btn-outline-dark" type="submit">
+    <img src="/images/searchicon.png" class="icon-size" alt="buscar">
+  </button>
+</form>
+        </div>
+
+        <div class="col-6 col-md-4 d-flex justify-content-end align-items-center">
+          {{#if login}}
+            <a href="#" class="me-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+              <img src="/images/carro.png" class="icon-size" alt="Carrito">
+            </a>
+            <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasProfile" aria-controls="offcanvasProfile">
+              <img src="/images/perfil-logo.png" class="icon-size" alt="Perfil">
+            </a>
+            <span class="ms-3 d-none d-md-inline">Saldo: ${{userProfile.dinero}}</span>
+            {{#if userProfile.es_admin}}
+              <a href="/auth/administracion" class="ms-3 text-white d-none d-md-inline">Administración</a>
+            {{/if}}
+          {{else}}
+            <a href="/auth/login" class="me-3 text-white">Iniciar Sesión</a>
+            <a href="/auth/register" class="text-white">Registrarse</a>
+          {{/if}}
+          <button class="navbar-toggler ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <!-- Buscador en pantallas móviles -->
+        <div class="col-12 mt-2 d-block d-md-none">
+          <form id="buscarProductoFormMobile" class="d-flex justify-content-center" style="max-width: 100%;" role="search" action="/buscar_producto" method="GET">
+            <input id="buscarProductoInputMobile" class="form-control me-2" type="search" name="query" placeholder="Buscar..." aria-label="Buscar">
+            <button class="btn btn-outline-dark" type="button" id="buscarProductoButtonMobile">
+              <img src="/images/searchicon.png" class="icon-size" alt="buscar">
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Offcanvas Navbar Content -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarContent">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Menú</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav ms-auto d-flex align-items-center">
+          <li class="nav-item"><a class="nav-link" href="/#billboard">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#servicios">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#productos">Productos</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  document.getElementById('buscarProductoButton').addEventListener('click', function() {
+    const query = document.getElementById('buscarProductoInput').value;
+    if (query) {
+      window.location.href = `/buscar_producto?query=${encodeURIComponent(query)}`;
+    }
+  });
+
+  document.getElementById('buscarProductoButtonMobile').addEventListener('click', function() {
+    const query = document.getElementById('buscarProductoInputMobile').value;
+    if (query) {
+      window.location.href = `/buscar_producto?query=${encodeURIComponent(query)}`;
+    }
+  });
+
+  const offcanvasLinks = document.querySelectorAll('#navbarContent .nav-link');
+  const offcanvas = document.getElementById('navbarContent');
+  const bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+  offcanvasLinks.forEach(link => {
+    link.addEventListener('click', function () {
+      bsOffcanvas.hide();
+    });
+  });
+</script>
+
+<style>
+  /* Ajustes de tamaño de íconos y espacios para móviles */
+  @media (max-width: 768px) {
+    .icon-size {
+      width: 20px; /* Ajustar tamaño de íconos para pantallas pequeñas */
+      height: auto;
+    }
+
+    /* Centrar y reducir el espaciado en offcanvas */
+    .offcanvas-body .nav-item {
+      text-align: center;
+      padding: 8px 0;
+    }
+
+    /* Reducir el tamaño del logo en dispositivos pequeños */
+    .niluan-size {
+      width: 100px;
+      height: auto;
+    }
+  }
+</style>

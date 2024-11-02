@@ -1,0 +1,24 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasProfile">
+  <div class="offcanvas-header">
+    <h5>Perfil</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+
+  {{#if login}}
+    <!-- Mostrar datos del perfil si el usuario está autenticado -->
+    <div class="card mt-4">
+      <div class="card-body text-center">
+        <img src="/images/perfil-logo.png" class="rounded-circle img-fluid mb-3" style="max-width: 120px;" alt="Avatar de usuario">
+        <h5 class="card-title">{{userProfile.nombre}} {{userProfile.apellido}}</h5>
+        <p class="card-text">Correo: {{userProfile.email}}</p>
+        <a href="/perfil" class="btn btn-dark">Ver Perfil</a>
+      </div>
+    </div>
+    <a href="/auth/logout" class="btn btn-outline-secondary w-100 mb-2 custom-button">Iniciar Sesión en otra cuenta</a>
+  {{else}}
+    <!-- Mostrar opciones de inicio de sesión y registro si el usuario no está autenticado -->
+    <a href="/auth/login" class="btn btn-outline-secondary w-100 mb-2 custom-button">Iniciar Sesión</a>
+    <a href="/auth/register" class="btn btn-outline-secondary w-100 custom-button">Registrarse</a>
+  {{/if}}
+</div>
+

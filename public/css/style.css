@@ -1,0 +1,364 @@
+/* Estilo general */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Evita desbordamiento lateral */
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+.main-content {
+  padding-top: 120px; /* Ajusta el valor según la altura de tu navbar */
+}
+footer {
+  margin-top: auto;
+}
+
+:root {
+  --color-dorado: #d4af37;
+  --color-negro: #000;
+  --color-blanco: #fff;
+}
+
+.more-height {
+  height: 30px;
+}
+
+.card {
+  margin-bottom: 30px; /* Puedes ajustar el valor a tu preferencia */
+}
+
+.card-img-top {
+  width: 100%; /* Asegura que las imágenes ocupen todo el ancho del contenedor */
+  height: 250px; /* Fija una altura específica para todas las imágenes */
+  object-fit: cover; /* Ajusta la imagen para cubrir todo el espacio sin distorsión */
+}
+
+
+/* Ajuste de la barra de navegación */
+.site-header {
+  z-index: 1000;
+  position: fixed; /* Mantener la barra fija en la parte superior */
+  width: 100%; /* Asegura que la barra ocupe todo el ancho */
+  background-color: var(--color-negro);
+  padding: 10px 0;
+  top: 40px; /* Ajusta este valor según la altura de la barra de texto */
+}
+
+.niluan-size {
+  height: 80px;
+  width: 160px;
+}
+
+
+.navbar {
+  display: flex; /* Usa Flexbox */
+  flex-wrap: wrap; /* Permite que los elementos se muevan a otra fila si es necesario */
+  justify-content: space-between; /* Distribuye espacio entre los elementos */
+  align-items: center; /* Asegura que todo esté alineado verticalmente */
+  padding: 10px;
+  height: auto;
+  border-bottom: 2px solid var(--color-dorado);
+}
+
+.search-form {
+  width: 100%;
+  max-width: 700px;
+}
+
+.search-form input {
+  width: 100%; /* Asegura que ocupe todo el ancho permitido */
+  max-width: 600px; /* Limita el tamaño máximo de la barra de búsqueda */
+}
+
+/* Íconos de carrito y perfil */
+.icon-size {
+  width: 30px; /* Ajusta el tamaño de los íconos */
+  height: 30px;
+}
+
+/* Ajustes del carrusel */
+#billboard {
+  padding-top: 120px; /* Ajusta el padding para permitir que la barra de navegación más alta no interfiera */
+}
+
+.carousel-item {
+  min-height: 500px; /* Altura mínima del carrusel */
+  overflow: hidden;
+}
+
+.carousel-inner img {
+  object-fit: cover; /* Ajusta la imagen para que cubra todo el contenedor */
+  object-position: center; /* Centra la imagen */
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho */
+  height: 500px;
+}
+
+/* Flechas del carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: var(--color-dorado); /* Color dorado para las flechas */
+  width: 100%;
+  height: 100%;
+}
+
+.logo-size {
+  width: 30px;
+}
+
+/* Barra de texto fija encima del header */
+.marquee-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1050; /* Asegura que esté encima del header */
+  padding: 5px 0;
+  text-align: center;
+}
+
+/* Contenedor de la animación */
+.marquee {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  overflow: hidden; /* Oculta el contenido que se sale de los límites */
+  white-space: nowrap; /* Evita que el texto haga saltos de línea */
+}
+
+/* Animación del texto */
+.marquee-text {
+  display: inline-block;
+  padding-left: 100%; /* Empieza fuera de la pantalla, a la derecha */
+  animation: marquee 15s linear infinite; /* Animación infinita */
+}
+
+/* Definición de la animación */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%); /* Comienza fuera de la pantalla, a la derecha */
+  }
+  100% {
+    transform: translateX(-100%); /* Desplaza el texto hacia la izquierda, fuera de la pantalla */
+  }
+}
+
+/* Evitar que los elementos se vayan a la siguiente fila en pantallas grandes */
+@media (min-width: 992px) {
+  .navbar {
+    flex-wrap: nowrap; /* Evita que los elementos se muevan a otra fila */
+  }
+
+  .search-form {
+    max-width: 700px; /* Aumenta el ancho de la barra de búsqueda en pantallas grandes */
+    justify-content: center;
+  }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .niluan-size {
+    width: 120px;
+    height: 70px;
+  }
+
+  .navbar {
+    min-height: 150px; /* Asegura que la barra de navegación sea lo suficientemente alta para cubrir la barra de búsqueda */
+  }
+
+  .icon-size {
+    width: 25px;
+    height: 25px;
+  }
+
+  .search-form input {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    max-width: 300px; /* Limita el tamaño máximo de la barra de búsqueda en pantallas pequeñas */
+  }
+
+  #billboard {
+    padding-top: 180px; /* Asegura que el contenido debajo de la barra de navegación no se solape */
+  }
+  .navbar {
+    height: 160px;
+  }
+  .logo-size {
+    width: 30px;
+  }
+}
+
+
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .niluan-size {
+    width: 120px;
+    height: 70px;
+  }
+
+  .icon-size {
+    width: 20px;
+    height: 20px;
+  }
+  .logo-size {
+    width: 25px;
+    height: 25px;
+  }
+
+  .search-form input {
+    max-width: 200px;
+  }
+
+  .navbar {
+    height: 160px;
+  }
+}
+  /* Reducir la barra de búsqueda en pantallas muy pequeñas */
+  .search-form input {
+    max-width: 100px; /* Reduce el tamaño máximo para pantallas pequeñas */
+  }
+
+  /* Ajustes para el carrusel en pantallas muy pequeñas */
+  .carousel-item {
+    height: 400px; /* Altura menor para pantallas pequeñas */
+  }
+
+  .carousel-inner img {
+    object-fit: cover;
+    height: 500px;
+  }
+
+  /* Ajustar el espaciado entre los íconos */
+  .nav-icons {
+    gap: 5px; /* Reduce el espacio entre los íconos */
+  }
+
+
+
+
+  .custom-button {
+    background-color: #FFD700 !important; /* Color dorado */
+    color: black !important;
+    border: none !important;
+    padding: 10px !important;
+    border-radius: 8px !important;
+    font-weight: bold !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Efecto hover para el botón */
+.custom-button:hover {
+  background-color: #FFD700; /* Color dorado más oscuro al pasar el cursor */
+  color: #000; /* Texto negro en hover */
+  transform: scale(1.05); /* Leve aumento del tamaño en hover */
+}
+
+
+.wallet-balance-custom {
+  color: #FFD700; /* Cambia por el color que prefieras */
+}
+
+
+.custom-no-outline {
+  outline: none; /* Quita el borde azul que aparece al hacer clic o seleccionar */
+  box-shadow: none; /* Elimina también cualquier sombra que se agregue al hacer foco */
+}
+
+  /* Cambiar color de enlaces del navbar a dorado */
+.navbar .nav-link {
+  color: #FFD700 !important; /* Color dorado */
+  transition: color 0.3s ease;
+}
+
+/* Opcional: Cambiar color cuando el ratón pasa sobre el enlace */
+.navbar .nav-link:hover {
+  color: #ffffff !important; /* Color dorado más oscuro */
+}
+
+/* Estilos para el formulario de Iniciar Sesión */
+.card-login {
+  max-width: 450px;
+  border-radius: 1rem; /* Bordes suaves pero más rectangulares */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Sombra suave */
+
+}
+
+/* Estilo para el botón Ingresar */
+.btn-ingresar {
+  background-color: #FFD700 !important; /* Color dorado */
+  color: #000 !important; /* Color de texto negro */
+  border: none !important;
+  padding: 10px !important;
+  font-weight: bold !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn-ingresar:hover {
+  background-color: #ffc107; /* Color más claro al hacer hover */
+  color: #000;
+}
+
+/* Estilo para el enlace de registrarse */
+.link-registrarse {
+  color: #FFD700; /* Color dorado */
+}
+
+.link-registrarse:hover {
+  color: #ffc107; /* Color más claro al hacer hover */
+  text-decoration: none; /* Sin subrayado */
+}
+
+/* Estilo adicional para alinear la sección de login */
+.login-section {
+  min-height: 100vh;
+  background-color: #fff; /* Fondo blanco */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo para el botón seleccionado en dorado */
+.btn-gold-selected {
+  background-color: #FFD700; /* Color dorado */
+  color: #000; /* Texto negro */
+  border: 2px solid #000; /* Borde negro */
+  padding: 10px 20px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+/* Estilo para el botón no seleccionado en dorado */
+.btn-dark-outline {
+  background-color: #000000; /* Sin color de fondo */
+  color: #f8f8f8; /* Texto dorado */
+  border: 3px solid #FFD700; /* Borde dorado */
+  padding: 10px 20px;
+  border-radius: 8px !important;
+  transition: all 0.3s ease;
+}
+
+/* Estilo hover para los botones */
+.btn-gold-selected:hover, .btn-dark-outline:hover {
+  background-color: #0f62b4; /* Color de fondo negro al hacer hover */
+  color: #fff; /* Texto blanco al hacer hover */
+  transform: scale(1.05); /* Aumentar un poco el tamaño al hacer hover */
+}
+
+/* Añadir un margen para espaciar los botones */
+.options-box .btn {
+  margin-bottom: 10px;
+}
