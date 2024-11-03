@@ -94,10 +94,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/auth', authRouter);
-app.use('/cart', cartRouter);
-app.use('/', userRouter);
+app.use('/api', indexRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/cart', cartRouter);
+app.use('/api', userRouter);
 app.use(express.static('public'));
 
 // catch 404 and forward to error handler
